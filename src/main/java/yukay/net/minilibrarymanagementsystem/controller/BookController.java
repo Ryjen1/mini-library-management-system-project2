@@ -13,9 +13,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
     @PostMapping("/add-book")
-    public Book addBook(@RequestBody Book book){
-
-        return bookService.addBook(book);
+    public String addBook(@RequestBody Book book){
+        Book addBook = bookService.addBook(book);
+        return "Book added successfully";
     }
     @DeleteMapping("/delete-book/{isbn}")
     public void deleteBookByIsbn(@PathVariable  String isbn){
