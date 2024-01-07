@@ -1,9 +1,11 @@
 package yukay.net.minilibrarymanagementsystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
-import yukay.net.minilibrarymanagementsystem.model.BorrowedBook;
+import yukay.net.minilibrarymanagementsystem.entity.BorrowedBook;
 import yukay.net.minilibrarymanagementsystem.repository.BorrowedBookRepository;
 
 import java.util.List;
@@ -18,14 +20,14 @@ public class BorrowedBookService {
         return bookRepository.save(borrowedBook);
     }
 
+    @CacheEvict(value = "borrowedBooks", key = "#id")
     public void deleteBorrowedBook(Long id) {
         bookRepository.deleteById(id);
     }
-
+    @Cacheable(value = "borrowedBooks", key = "#id")
     public Optional<BorrowedBook> searchBorrowedBook(Long id) {
         return bookRepository.findById(id);
     }
-    @GetMapping("borrowed-books")
     public List<BorrowedBook> allBorrowedBooks() {
         return bookRepository.findAll();
     }

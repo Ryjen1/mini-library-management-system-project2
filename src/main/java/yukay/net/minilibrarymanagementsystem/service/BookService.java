@@ -2,10 +2,10 @@ package yukay.net.minilibrarymanagementsystem.service;
 
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import yukay.net.minilibrarymanagementsystem.model.Book;
+import yukay.net.minilibrarymanagementsystem.entity.Book;
 import yukay.net.minilibrarymanagementsystem.repository.BookRepository;
 
 import java.util.List;
@@ -27,11 +27,13 @@ public class BookService {
        return bookRepository.save(book);
     }
     @Transactional
+    @CacheEvict(value = "books", key ="#isbn")
     public void deleteBookByIsbn(String isbn){
         bookRepository.deleteByIsbn(isbn);
 
     }
 
+    @Cacheable(value = "bookCache", key = "#title")
     public Book getBook(String title){
         return bookRepository.findByTitle(title);
     }

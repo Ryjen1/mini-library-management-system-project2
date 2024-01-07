@@ -2,7 +2,7 @@ package yukay.net.minilibrarymanagementsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import yukay.net.minilibrarymanagementsystem.model.User;
+import yukay.net.minilibrarymanagementsystem.entity.User;
 import yukay.net.minilibrarymanagementsystem.service.UserService;
 
 import java.util.List;
