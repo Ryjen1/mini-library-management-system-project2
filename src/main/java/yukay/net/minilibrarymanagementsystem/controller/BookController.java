@@ -9,7 +9,7 @@ import yukay.net.minilibrarymanagementsystem.service.BookService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/mini-library")
+@RequestMapping("/mini-library/books")
 public class BookController {
     @Autowired
     private BookService bookService;

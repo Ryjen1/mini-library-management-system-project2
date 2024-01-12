@@ -15,6 +15,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -24,6 +25,7 @@ public class UserService {
     }
     @CacheEvict(value = "users",key = "#id")
     public void deleteUser(Long id) {
+
         userRepository.deleteById(id);
     }
     @Cacheable(value = "users",key = "id")
@@ -32,6 +34,7 @@ public class UserService {
     }
 
     public List<User> allUser() {
+
         return  userRepository.findAll();
     }
 }

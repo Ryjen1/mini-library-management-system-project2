@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/mini-library")
+@RequestMapping("/mini-library/borrowed-books")
 public class BorrowedBookController {
     @Autowired
     private BorrowedBookService borrowedBookService;

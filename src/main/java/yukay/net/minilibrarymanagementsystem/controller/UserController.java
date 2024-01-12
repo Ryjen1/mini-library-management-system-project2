@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("mini-library")
+@RequestMapping("/mini-library/users")
 
 public class UserController {
     @Autowired
