@@ -1,6 +1,4 @@
 package yukay.net.minilibrarymanagementsystem.errorAdviser;
-
-import com.yukay.LMS.exception.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
